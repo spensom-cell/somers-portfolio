@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farewell to DVDs — Spencer Somers</title>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursor-ring"></div>
+  <nav>
+    <a href="index.html" class="nav-name">Spencer Somers</a>
+    <ul class="nav-links"><li><a href="index.html">Work</a></li><li><a href="about.html">About</a></li><li><a href="index.html#contact">Contact</a></li></ul>
+    <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu"><a href="index.html">Work</a><a href="about.html">About</a><a href="index.html#contact">Contact</a></div>
+
+  <section class="project-hero">
+    <div class="project-hero-media">
+      <!-- REPLACE: <video autoplay muted loop playsinline src="images/dvds-hero.mp4"></video> -->
+      <div class="project-hero-placeholder" style="background:linear-gradient(135deg,#0f0608,#200810);">
+        <span style="font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(240,236,228,0.1);">[ Hero image or video: Farewell to DVDs ]</span>
+      </div>
+    </div>
+    <div class="project-hero-content">
+      <div class="project-meta">
+        <span class="project-tag">2023</span>
+        <span class="project-tag">Brand Campaign / Film</span>
+      </div>
+      <h1 class="project-title">Farewell<br>to <em>DVDs</em></h1>
+    </div>
+  </section>
+
+  <div class="project-body">
+    <div class="project-layout">
+      <div class="project-copy fade-in">
+        <p>As a movie fan (AIM screenname: movieboy7), I have a complicated and deeply personal relationship with physical media. I've bought the same movies across VHS, DVD, HD-DVD (oops), Blu-Ray, 4K and iTunes — and I'd do it again.</p>
+        <p>So when Netflix shipped its final red envelope on September 29, 2023 — closing out 25 years and 5.2 billion discs — I wanted the farewell to feel earned. Not corporate. Not a press release. A real goodbye from people who genuinely loved what those little red envelopes meant.</p>
+        <p>The campaign film, set to Blink-182's <em>All the Small Things</em>, traced the full arc: from loading menus and scratched discs to mail trucks and Netflix's very first shipment (Beetlejuice, 1998). It's Nice That, Deadline, Variety, The Hollywood Reporter and TODAY all covered it. We also spelled out "DVDs Will Always Be In Our DNA" on the Sunset Blvd marquee — in real red envelopes.</p>
+      </div>
+      <div class="project-sidebar fade-in">
+        <div class="sidebar-item"><div class="sidebar-label">Role</div><div class="sidebar-value">Creative Direction / Writing</div></div>
+        <div class="sidebar-item"><div class="sidebar-label">Client</div><div class="sidebar-value">Netflix</div></div>
+        <div class="sidebar-item"><div class="sidebar-label">Director</div><div class="sidebar-value">Felipe Lima for Ways & Means</div></div>
+        <div class="sidebar-item"><div class="sidebar-label">Type</div><div class="sidebar-value">Brand Campaign / Film / OOH</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-media">
+    <div class="media-grid featured">
+      <div class="yt-embed">
+      <iframe src="https://www.youtube.com/embed/n7Vz-saGwjU" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+      <div class="media-item tall">
+        <img src="images/dvds-marquee.jpg" alt="Red envelope marquee">
+      </div>
+    </div>
+    <div class="media-grid three-col" style="margin-top:3px;">
+      <div class="media-item square">
+        <img src="images/dvds-3.gif">
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="press-section fade-in">
+    <div class="press-label">Press</div>
+    <div class="press-links">
+      <a href="#" class="press-link"><span class="press-pub">Variety</span><span class="press-title">Netflix Bids Farewell to DVD Era</span><span class="press-arrow">→</span></a>
+      <a href="#" class="press-link"><span class="press-pub">The Hollywood Reporter</span><span class="press-title">Netflix DVD Service Ends After 25 Years</span><span class="press-arrow">→</span></a>
+      <a href="#" class="press-link"><span class="press-pub">It's Nice That</span><span class="press-title">Netflix's DVD farewell campaign</span><span class="press-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="spoiled.html" class="proj-nav-link"><span class="proj-nav-dir">← Previous</span><span class="proj-nav-title">Spoiled 2025</span></a>
+    <a href="index.html" class="back-to-work">All Work</a>
+    <a href="netflix-house.html" class="proj-nav-link next"><span class="proj-nav-dir">Next →</span><span class="proj-nav-title">Welcome to Netflix House</span></a>
+  </div>
+  <footer><span>© 2025 Spencer Somers</span></footer>
+  <script src="shared.js"></script><script>initCursor(); initScrollAnimations();</script>
+</body>
+</html>

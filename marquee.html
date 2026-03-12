@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Netflix Marquee — Spencer Somers</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <nav>
+    <a href="index.html" class="nav-name">Spencer Somers</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a><a href="about.html">About</a><a href="index.html#contact">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="project-hero">
+    <div class="project-hero-media">
+      <!-- REPLACE with: <img src="images/marquee-hero.jpg" alt="The Netflix Marquee on Sunset Blvd"> -->
+      <div class="project-hero-placeholder" style="background: linear-gradient(135deg,#180a06,#2a1008);">
+        <span style="font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(240,236,228,0.1);">[ Hero image: Netflix Marquee on Sunset Blvd ]</span>
+      </div>
+    </div>
+    <div class="project-hero-content">
+      <div class="project-meta">
+        <span class="project-tag">2021 — Present</span>
+        <span class="project-tag">OOH / Brand Voice</span>
+      </div>
+      <h1 class="project-title">The Netflix<br><em>Marquee</em></h1>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <div class="project-body">
+    <div class="project-layout">
+      <div class="project-copy fade-in">
+        <p>The Netflix Marquee is a permanent brand fixture on Sunset Blvd — one of the most photographed streets in the world. Its mission: bring Netflix's brand voice into the real world by amplifying the conversation around culture with witty, reactive messages that change every week.</p>
+        <p>It's OOH that moves at the speed of internet — bringing unexpected joy to commuters, creating Netflix-flavored FOMO, and earning its place as a memorable part of an iconic boulevard. Rather than leaning on promotional messages, the Marquee reflects what everyone is already talking about at that exact moment. In our first few months alone we started a flame war between The Rock and Ryan Reynolds, celebrated Halle Berry and Regina King, urged people to listen to scientists in the spirit of <em>Don't Look Up</em>, and issued a PSA to stop at red lights on behalf of <em>Squid Game</em>.</p>
+        <!-- TIMELAPSE GIF -->
+        <div style="width:100%; margin: 40px 0; overflow:hidden;">
+          <img src="images/marquee-timelapse.gif" alt="Netflix Marquee timelapse" style="width:100%; display:block;"><div style="width:100%; aspect-ratio:16/9; background:var(--dark); border:1px dashed rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center;">
+            <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--off-white);opacity:0.3;">[ GIF: marquee-timelapse.gif ]</span>
+          </div>
+        </div>
+
+        <p>I created the program and serve as its editor-in-chief — overseeing each week's message and writing many of them. What started as a single billboard on Sunset has since expanded to <strong>17 placements across 13 markets</strong> — Times Square, Trevi Fountain, Madrid, Seoul, Paris, Warsaw, Johannesburg, Mexico City, Buenos Aires, Bogotá, Sydney, Stockholm and more. Our first message was the <strong>most successful brand post in LinkedIn history</strong>.</p>
+      </div>
+      <div class="project-sidebar fade-in">
+        <div class="sidebar-item">
+          <div class="sidebar-label">Role</div>
+          <div class="sidebar-value">Creator & Editor-in-Chief</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-label">Client</div>
+          <div class="sidebar-value">Netflix</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-label">Type</div>
+          <div class="sidebar-value">OOH / Brand Voice / Ongoing Program</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-label">Scale</div>
+          <div class="sidebar-value">17 placements<br>13 markets globally</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEDIA -->
+  <!-- MARQUEE MOSAIC -->
+  <style>
+    .marquee-mosaic {
+      padding: 80px 48px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .mosaic-label {
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .mosaic-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .mosaic-intro {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.08em; color: var(--off-white);
+      margin-bottom: 32px; line-height: 1.6;
+      max-width: 600px;
+    }
+
+    /* Asymmetric mosaic grid */
+    .billboard-mosaic {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 3px;
+    }
+
+    .bm {
+      overflow: hidden;
+      position: relative;
+      background: var(--dark);
+    }
+    .bm img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease;
+      filter: grayscale(10%) brightness(0.9);
+    }
+    .bm:hover img {
+      transform: scale(1.04);
+      filter: grayscale(0%) brightness(1);
+    }
+
+    /* Layout — 13 images across 4 rows, varied sizes */
+    .bm-1  { grid-column: 1/6;  aspect-ratio: 16/9; }
+    .bm-2  { grid-column: 6/13; aspect-ratio: 16/9; }
+    .bm-3  { grid-column: 1/5;  aspect-ratio: 16/9; }
+    .bm-4  { grid-column: 5/9;  aspect-ratio: 16/9; }
+    .bm-5  { grid-column: 9/13; aspect-ratio: 16/9; }
+    .bm-6  { grid-column: 1/8;  aspect-ratio: 16/9; }
+    .bm-7  { grid-column: 8/13; aspect-ratio: 16/9; }
+    .bm-8  { grid-column: 1/4;  aspect-ratio: 16/9; }
+    .bm-9  { grid-column: 4/7;  aspect-ratio: 16/9; }
+    .bm-10 { grid-column: 7/10; aspect-ratio: 16/9; }
+    .bm-11 { grid-column: 10/13; aspect-ratio: 16/9; }
+    .bm-12 { grid-column: 1/7;  aspect-ratio: 16/9; }
+    .bm-13 { grid-column: 7/13; aspect-ratio: 16/9; }
+
+    @media (max-width: 900px) {
+      .marquee-mosaic { padding: 48px 24px 0; }
+      .billboard-mosaic { grid-template-columns: 1fr 1fr; gap: 3px; }
+      .bm-1,.bm-2,.bm-3,.bm-4,.bm-5,.bm-6,.bm-7,
+      .bm-8,.bm-9,.bm-10,.bm-11,.bm-12,.bm-13 {
+        grid-column: span 1;
+      }
+    }
+  </style>
+
+  <div class="marquee-mosaic fade-in">
+    <div class="mosaic-label">Selected Messages</div>
+    <p class="mosaic-intro">A small selection from four years of weekly messages on Sunset Blvd — and 17 placements around the world.</p>
+    <div class="billboard-mosaic">
+      <div class="bm bm-1"><img src="images/marquee-1.jpg" alt="One Last Adventure"></div>
+      <div class="bm bm-2"><img src="images/marquee-2.jpg" alt="It Hurts When You Call The Nineties The Late 1900s"></div>
+      <div class="bm bm-3"><img src="images/marquee-3.jpg" alt="Wednesday Addams Axed All Our Ideas For This Billboard"></div>
+      <div class="bm bm-4"><img src="images/marquee-4.jpg" alt="Sesame Street Is Brought To You By The Letter..."></div>
+      <div class="bm bm-5"><img src="images/marquee-5.jpg" alt="One Word To Describe David Beckham's Life: Goals"></div>
+      <div class="bm bm-6"><img src="images/marquee-6.jpg" alt="This Billboard Is Cake"></div>
+      <div class="bm bm-7"><img src="images/marquee-7.jpg" alt="One Piece Of Advice: Reach For Your Dreams"></div>
+      <div class="bm bm-8"><img src="images/marquee-8.jpg" alt="If You Can Read This You Can Read Subtitles"></div>
+      <div class="bm bm-9"><img src="images/marquee-9.jpg" alt="Finally A Night Where Hollywood Celebrates Actors"></div>
+      <div class="bm bm-10"><img src="images/marquee-10.jpg" alt="Nothing Will Deflate Tom Brady's Balls Like This Roast"></div>
+      <div class="bm bm-11"><img src="images/marquee-11.jpg" alt="Yes Everyone Can Hear You Singing Golden In Your Car"></div>
+      <div class="bm bm-12"><img src="images/marquee-12.jpg" alt="Ryan Reynolds Uses His Mom's Netflix Account"></div>
+      <div class="bm bm-13"><img src="images/marquee-13.jpg" alt="Still Processing Adolescence But Aren't We All"></div>
+    </div>
+  </div>
+
+  <!-- CASE STUDY VIDEO -->
+  <style>
+    .video-section {
+      padding: 80px 48px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .video-embed {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--dark);
+      overflow: hidden;
+    }
+    .video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    @media (max-width: 768px) {
+      .video-section { padding: 48px 24px 0; }
+    }
+  </style>
+
+  <div class="video-section fade-in">
+    <div class="mosaic-label" style="margin-bottom:24px;">Case Study</div>
+    <div class="video-embed">
+      <iframe
+        src="https://www.youtube.com/embed/xXYqdQ4ELYk"
+        title="The Netflix Marquee — Case Study"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Global Markets -->
+  <style>
+    .global-section {
+      padding: 80px 48px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .global-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3px;
+    }
+
+    /* Varied sizes for editorial feel */
+    .gm { position: relative; overflow: hidden; background: var(--dark); }
+    .gm img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease;
+      filter: grayscale(10%) brightness(0.88);
+    }
+    .gm:hover img { transform: scale(1.04); filter: grayscale(0%) brightness(0.95); }
+
+    /* Location label — always visible, bottom-left */
+    .gm-label {
+      position: absolute;
+      bottom: 0; left: 0;
+      padding: 10px 14px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: linear-gradient(to top, rgba(8,8,8,0.85) 0%, transparent 100%);
+      width: 100%;
+    }
+    .gm-city {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+    }
+    .gm-country {
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    /* Placeholder for global images */
+    .gm-ph {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--dark);
+      border: 1px dashed rgba(255,255,255,0.05);
+    }
+    .gm-ph span {
+      font-family: var(--mono); font-size: 8px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--off-white); opacity: 0.25;
+    }
+
+    /* Grid layout — 12 images, 4 rows */
+    .gm-1  { grid-column: 1/5;  aspect-ratio: 16/9; }
+    .gm-2  { grid-column: 5/9;  aspect-ratio: 16/9; }
+    .gm-3  { grid-column: 9/13; aspect-ratio: 16/9; }
+    .gm-4  { grid-column: 1/7;  aspect-ratio: 16/9; }
+    .gm-5  { grid-column: 7/10; aspect-ratio: 16/9; }
+    .gm-6  { grid-column: 10/13; aspect-ratio: 16/9; }
+    .gm-7  { grid-column: 1/4;  aspect-ratio: 16/9; }
+    .gm-8  { grid-column: 4/8;  aspect-ratio: 16/9; }
+    .gm-9  { grid-column: 8/13; aspect-ratio: 16/9; }
+    .gm-10 { grid-column: 1/5;  aspect-ratio: 16/9; }
+    .gm-11 { grid-column: 5/9;  aspect-ratio: 16/9; }
+    .gm-12 { grid-column: 9/13; aspect-ratio: 16/9; }
+
+    @media (max-width: 900px) {
+      .global-section { padding: 48px 24px 0; }
+      .global-grid { grid-template-columns: 1fr 1fr; gap: 3px; }
+      .gm-1,.gm-2,.gm-3,.gm-4,.gm-5,.gm-6,
+      .gm-7,.gm-8,.gm-9,.gm-10,.gm-11,.gm-12 { grid-column: span 1; }
+    }
+  </style>
+
+  <div class="global-section fade-in">
+    <div class="mosaic-label" style="margin-bottom:24px;">Global Program — 13 Markets</div>
+    <p class="mosaic-intro">The program has expanded to 17 placements across 13 markets, each programmed by regional creative leads in their own voice.</p>
+    <div class="global-grid">
+
+      <div class="gm gm-1">
+        <img src="images/global-newyork.jpg" alt="Times Square"><div class="gm-ph"><span>[ New York ]</span></div>
+        <div class="gm-label"><span class="gm-city">New York</span><span class="gm-country">United States</span></div>
+      </div>
+
+      <div class="gm gm-2">
+        <img src="images/global-rome.jpg" alt="Trevi Fountain"><div class="gm-ph"><span>[ Rome ]</span></div>
+        <div class="gm-label"><span class="gm-city">Rome</span><span class="gm-country">Italy</span></div>
+      </div>
+
+      <div class="gm gm-3">
+        <img src="images/global-seoul.jpg" alt="Seoul"><div class="gm-ph"><span>[ Seoul ]</span></div>
+        <div class="gm-label"><span class="gm-city">Seoul</span><span class="gm-country">South Korea</span></div>
+      </div>
+
+      <div class="gm gm-4">
+        <img src="images/global-paris.jpg" alt="Paris"><div class="gm-ph"><span>[ Paris ]</span></div>
+        <div class="gm-label"><span class="gm-city">Paris</span><span class="gm-country">France</span></div>
+      </div>
+
+      <div class="gm gm-5">
+        <img src="images/global-madrid.jpg" alt="Madrid"><div class="gm-ph"><span>[ Madrid ]</span></div>
+        <div class="gm-label"><span class="gm-city">Madrid</span><span class="gm-country">Spain</span></div>
+      </div>
+
+      <div class="gm gm-6">
+        <img src="images/global-sydney.jpg" alt="Sydney"><div class="gm-ph"><span>[ Sydney ]</span></div>
+        <div class="gm-label"><span class="gm-city">Sydney</span><span class="gm-country">Australia</span></div>
+      </div>
+
+      <div class="gm gm-7">
+        <img src="images/global-mexico.jpg" alt="Mexico City"><div class="gm-ph"><span>[ Mexico City ]</span></div>
+        <div class="gm-label"><span class="gm-city">Mexico City</span><span class="gm-country">Mexico</span></div>
+      </div>
+
+      <div class="gm gm-8">
+        <img src="images/global-johannesburg.jpg" alt="Johannesburg"><div class="gm-ph"><span>[ Johannesburg ]</span></div>
+        <div class="gm-label"><span class="gm-city">Johannesburg</span><span class="gm-country">South Africa</span></div>
+      </div>
+
+      <div class="gm gm-9">
+        <img src="images/global-warsaw.jpg" alt="Warsaw"><div class="gm-ph"><span>[ Warsaw ]</span></div>
+        <div class="gm-label"><span class="gm-city">Warsaw</span><span class="gm-country">Poland</span></div>
+      </div>
+
+      <div class="gm gm-10">
+        <img src="images/global-buenosaires.jpg" alt="Buenos Aires"><div class="gm-ph"><span>[ Buenos Aires ]</span></div>
+        <div class="gm-label"><span class="gm-city">Buenos Aires</span><span class="gm-country">Argentina</span></div>
+      </div>
+
+      <div class="gm gm-11">
+        <img src="images/global-stockholm.jpg" alt="Stockholm"><div class="gm-ph"><span>[ Stockholm ]</span></div>
+        <div class="gm-label"><span class="gm-city">Stockholm</span><span class="gm-country">Sweden</span></div>
+      </div>
+
+      <div class="gm gm-12">
+        <img src="images/global-bogota.jpg" alt="Bogotá">
+        <div class="gm-label"><span class="gm-city">Bogotá</span><span class="gm-country">Colombia</span></div>
+      </div>
+
+    </div>
+    <!-- Extra markets row -->
+    <div class="global-grid" style="margin-top:3px;">
+      <div class="gm" style="grid-column:1/5; aspect-ratio:16/9;">
+        <img src="images/global-warsaw.jpg" alt="Warsaw">
+        <div class="gm-label"><span class="gm-city">Warsaw</span><span class="gm-country">Poland</span></div>
+      </div>
+      <div class="gm" style="grid-column:5/9; aspect-ratio:16/9;">
+        <img src="images/global-stockholm.jpg" alt="Stockholm">
+        <div class="gm-label"><span class="gm-city">Stockholm</span><span class="gm-country">Sweden</span></div>
+      </div>
+      <div class="gm" style="grid-column:9/13; aspect-ratio:16/9;">
+        <img src="images/global-netflixhousedallas.jpg" alt="Netflix House Dallas">
+        <div class="gm-label"><span class="gm-city">Dallas</span><span class="gm-country">Netflix House</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CELEB REACTIONS -->
+  <style>
+    .celeb-section {
+      padding: 80px 48px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .celeb-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .celeb-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+      aspect-ratio: 16/9;
+    }
+    .celeb-item img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease;
+      filter: grayscale(10%) brightness(0.88);
+    }
+    .celeb-item:hover img {
+      transform: scale(1.03);
+      filter: grayscale(0%) brightness(0.95);
+    }
+    .celeb-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 10px 14px;
+      background: linear-gradient(to top, rgba(8,8,8,0.85) 0%, transparent 100%);
+    }
+    .celeb-name {
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--white); display: block;
+    }
+    .celeb-context {
+      font-family: var(--mono); font-size: 8px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); display: block; margin-top: 2px;
+    }
+    .celeb-ph {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--dark);
+      border: 1px dashed rgba(255,255,255,0.05);
+    }
+    .celeb-ph span {
+      font-family: var(--mono); font-size: 8px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--off-white); opacity: 0.25;
+    }
+    @media (max-width: 768px) {
+      .celeb-section { padding: 48px 24px 0; }
+      .celeb-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <div class="celeb-section fade-in">
+    <div class="mosaic-label" style="margin-bottom:24px;">In The Wild</div>
+    <p class="mosaic-intro" style="margin-bottom:32px;">When the marquee lands, people notice.</p>
+    <div class="celeb-grid">
+
+      <div class="celeb-item">
+        <img src="images/celeb-tonight-show.jpg" alt="Tonight Show"><div class="celeb-ph"><span>[ Image: Tonight Show — celeb-tonight-show.jpg ]</span></div>
+        <div class="celeb-caption">
+          <span class="celeb-name">The Tonight Show</span>
+          <span class="celeb-context">NBC — The Marquee goes national</span>
+        </div>
+      </div>
+
+      <div class="celeb-item">
+        <img src="images/celeb-olivia.jpg" alt="Olivia Rodrigo"><div class="celeb-ph"><span>[ Image: Olivia Rodrigo — celeb-olivia.jpg ]</span></div>
+        <div class="celeb-caption">
+          <span class="celeb-name">Olivia Rodrigo</span>
+          <span class="celeb-context">It's Not Even Halloween...</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRESS -->
+  <div class="press-section fade-in">
+    <div class="press-label">Press</div>
+    <div class="press-links">
+      <a href="https://adage.com/creativity/work/netflix-billboard-says-dont-give-your-dreams/2370101" target="_blank" class="press-link">
+        <span class="press-pub">ADWEEK</span>
+        <span class="press-title">This Netflix Billboard is the modern 'hang in there' poster</span>
+        <span class="press-arrow">→</span>
+      </a>
+      <a href="https://people.com/movies/ryan-reynolds-jokes-that-his-mom-uses-his-onlyfans-account-in-response-to-netflix-billboard-prank/" target="_blank" class="press-link">
+        <span class="press-pub">People</span>
+        <span class="press-title">Ryan Reynolds Jokes That Mom Uses His OnlyFans Account</span>
+        <span class="press-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- PROJECT NAV -->
+  <div class="project-nav">
+    <a href="index.html" class="back-to-work">← All Work</a>
+    <a href="next-on-netflix.html" class="proj-nav-link next">
+      <span class="proj-nav-dir">Next Project →</span>
+      <span class="proj-nav-title">You're Not Ready For What's Next</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>© 2025 Spencer Somers</span>
+    
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>initCursor(); initScrollAnimations();</script>
+</body>
+</html>

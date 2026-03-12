@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spencer Somers — Creative Director</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Hero */
+    .hero {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 48px 48px 60px;
+      margin-top: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(232,52,28,0.04) 0%, transparent 60%);
+    }
+    .hero-tagline {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
+    }
+    .hero-title {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(48px, 7vw, 108px);
+      line-height: 0.92; letter-spacing: -0.02em;
+      max-width: 900px;
+      opacity: 0; animation: fadeUp 1s ease forwards 0.5s;
+    }
+    .hero-title em { font-style: italic; color: var(--off-white); }
+
+    /* Work section */
+    .work-section { padding: 120px 48px; }
+
+    /* Editorial grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3px;
+    }
+
+    .project-card {
+      position: relative; overflow: hidden;
+      background: var(--dark); cursor: none;
+      display: block; text-decoration: none;
+    }
+    .project-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.15) 55%, transparent 100%);
+      transition: opacity 0.4s ease;
+    }
+    .project-card:hover::after { opacity: 0.75; }
+
+    .project-card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+      filter: grayscale(15%) brightness(0.82);
+    }
+    .project-card:hover img {
+      transform: scale(1.04);
+      filter: grayscale(0%) brightness(0.88);
+    }
+
+    .card-ph {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-ph-label {
+      font-family: var(--serif); font-style: italic;
+      font-size: 13px; color: rgba(240,236,228,0.12);
+      text-align: center; padding: 20px;
+      pointer-events: none;
+    }
+
+    .card-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 28px 28px 24px; z-index: 2;
+      transform: translateY(4px);
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover .card-info { transform: translateY(0); }
+
+    .card-year {
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.2em; color: var(--accent);
+      text-transform: uppercase; margin-bottom: 6px; display: block;
+    }
+    .card-title {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(18px, 2.2vw, 28px);
+      line-height: 1.1; color: var(--white);
+    }
+    .card-type {
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.12em; color: var(--off-white);
+      text-transform: uppercase; margin-top: 7px;
+      opacity: 0; transform: translateY(5px);
+      transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
+    }
+    .project-card:hover .card-type { opacity: 1; transform: translateY(0); }
+
+    .card-arrow {
+      position: absolute; top: 20px; right: 20px;
+      width: 34px; height: 34px;
+      border: 1px solid rgba(240,236,228,0.18);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 2;
+      opacity: 0; transform: translate(4px,-4px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .project-card:hover .card-arrow { opacity: 1; transform: translate(0,0); }
+    .card-arrow svg { width: 13px; height: 13px; stroke: var(--white); fill: none; stroke-width: 1.5; }
+
+    /* Grid positions */
+    .g-hero-1  { grid-column: 1/8;  grid-row:1; height: 580px; }
+    .g-hero-2  { grid-column: 8/13; grid-row:1; height: 580px; }
+    .g-mid-1   { grid-column: 1/5;  grid-row:2; height: 420px; }
+    .g-mid-2   { grid-column: 5/9;  grid-row:2; height: 420px; }
+    .g-mid-3   { grid-column: 9/13; grid-row:2; height: 420px; }
+    .g-sm-1    { grid-column: 1/4;  grid-row:3; height: 340px; }
+    .g-sm-2    { grid-column: 4/7;  grid-row:3; height: 340px; }
+    .g-sm-3    { grid-column: 7/10; grid-row:3; height: 340px; }
+    .g-sm-4    { grid-column: 10/13;grid-row:3; height: 340px; }
+
+    /* placeholder bg tones */
+    .ph-1 { background: linear-gradient(135deg,#180a06,#2a1008); }
+    .ph-2 { background: linear-gradient(135deg,#06080f,#08102a); }
+    .ph-3 { background: linear-gradient(135deg,#0a0a0a,#181818); }
+    .ph-4 { background: linear-gradient(135deg,#0f0608,#200810); }
+    .ph-5 { background: linear-gradient(135deg,#06080f,#080e1a); }
+    .ph-6 { background: linear-gradient(135deg,#100606,#1e1006); }
+    .ph-7 { background: linear-gradient(135deg,#060610,#0806a0a); }
+    .ph-8 { background: linear-gradient(135deg,#060a06,#0c180c); }
+    .ph-9 { background: linear-gradient(135deg,#0a0806,#181406); }
+
+    /* About teaser */
+    .about-teaser {
+      padding: 140px 48px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .teaser-label { margin-bottom: 40px; }
+    .teaser-title {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(48px, 5.5vw, 88px);
+      line-height: 0.95; letter-spacing: -0.02em;
+    }
+    .teaser-title em { font-style: italic; color: var(--off-white); }
+    .teaser-body {
+      font-size: 15px; line-height: 1.85; color: var(--off-white);
+    }
+    .teaser-body p { margin-bottom: 20px; }
+    .teaser-body strong { color: var(--white); font-weight: 500; }
+    .teaser-body em { font-style: italic; color: var(--white); }
+    .teaser-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+      margin-top: 32px;
+      transition: gap 0.3s ease;
+    }
+    .teaser-cta:hover { gap: 20px; }
+    .teaser-cta::after { content: '→'; font-family: var(--sans); }
+
+    /* Contact */
+    .contact-section {
+      padding: 120px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .contact-title {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(48px, 6vw, 96px);
+      line-height: 0.95; letter-spacing: -0.02em;
+    }
+    .contact-title em { font-style: italic; color: var(--off-white); }
+    .contact-email {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 12px;
+      transition: gap 0.3s ease;
+    }
+    .contact-email:hover { gap: 20px; }
+    .contact-email::after { content: '→'; font-family: var(--sans); }
+
+    @media (max-width: 900px) {
+      .hero { padding: 0 24px 48px; }
+      .hero-line { display: none; }
+      .hero-scroll { display: none; }
+      .work-section { padding: 80px 24px; }
+      .project-grid { grid-template-columns: 1fr 1fr; gap: 3px; }
+      .g-hero-1,.g-hero-2,.g-mid-1,.g-mid-2,.g-mid-3,
+      .g-sm-1,.g-sm-2,.g-sm-3,.g-sm-4 {
+        grid-column: span 1; grid-row: auto; height: 260px;
+      }
+      .about-teaser { padding: 80px 24px; grid-template-columns:1fr; gap:40px; }
+      .contact-section { padding:80px 24px; flex-direction:column; align-items:flex-start; gap:32px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <nav>
+    <a href="index.html" class="nav-name">Spencer Somers</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-tagline">Creative Director — Los Angeles</div>
+    <h1 class="hero-title">I build brands<br>that fans <em>care about.</em><br>Mostly at Netflix.</h1>
+  </section>
+
+  <!-- WORK -->
+  <section class="work-section" id="work">
+    <div class="section-label">Selected Work</div>
+    <div class="project-grid">
+
+      <!-- Row 1 -->
+      <a href="marquee.html" class="project-card g-hero-1 fade-in">
+        <div class="card-ph ph-1">
+          <img src="images/marquee-hero.jpg" alt="The Netflix Marquee">
+        </div>
+        <div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        <div class="card-info">
+          <span class="card-year">2021 — Present</span>
+          <div class="card-title">The Netflix Marquee</div>
+          <div class="card-type">OOH / Brand Voice / Editor-in-Chief</div>
+        </div>
+      </a>
+
+      <a href="next-on-netflix.html" class="project-card g-hero-2 fade-in">
+        <div class="card-ph ph-2">
+          <img src="images/next-hero.jpg" alt="You're Not Ready For What's Next">
+        </div>
+        <div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        <div class="card-info">
+          <span class="card-year">2025</span>
+          <div class="card-title">You're Not Ready<br>For What's Next</div>
+          <div class="card-type">Global Campaign / Film</div>
+        </div>
+      </a>
+
+      <!-- Row 2 -->
+      <a href="spoiled.html" class="project-card g-mid-1 fade-in">
+        <div class="card-ph ph-3">
+          <img src="images/spoiled-hero.gif" alt="Spoiled 2025">
+        </div>
+        <div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        <div class="card-info">
+          <span class="card-year">2025</span>
+          <div class="card-title">Spoiled 2025</div>
+          <div class="card-type">Year in Review / Campaign</div>
+        </div>
+      </a>
+
+      <a href="farewell-dvds.html" class="project-card g-mid-2 fade-in">
+        <div class="card-ph ph-4">
+          <img src="images/dvds-hero.gif" alt="Farewell to DVDs">
+        </div>
+        <div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        <div class="card-info">
+          <span class="card-year">2023</span>
+          <div class="card-title">Farewell to DVDs</div>
+          <div class="card-type">Brand Campaign / Film</div>
+        </div>
+      </a>
+
+      <a href="netflix-house.html" class="project-card g-mid-3 fade-in">
+        <div class="card-ph ph-5">
+          <img src="images/house-hero.gif" alt="Welcome to Netflix House">
+        </div>
+        <div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        <div class="card-info">
+          <span class="card-year">2025</span>
+          <div class="card-title">Welcome to<br>Netflix House</div>
+          <div class="card-type">Experiential Launch</div>
+        </div>
+      </a>
+
+      <!-- Row 3 -->
+      <a href="netflix-25.html" class="project-card g-sm-1 fade-in">
+        <div class="card-ph ph-6">
+          <img src="images/n25-hero.gif" alt="Netflix 25">
+        </div>
+        <div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        <div class="card-info">
+          <span class="card-year">2022</span>
+          <div class="card-title">Netflix 25</div>
+          <div class="card-type">Anniversary Campaign</div>
+        </div>
+      </a>
+
+      <a href="fans-make-movies.html" class="project-card g-sm-2 fade-in">
+        <div class="card-ph ph-7">
+          <img src="images/fans-hero.jpg" alt="Fans Make The Movies">
+        </div>
+        <div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        <div class="card-info">
+          <span class="card-year">2023</span>
+          <div class="card-title">Fans Make<br>The Movies</div>
+          <div class="card-type">Brand Campaign</div>
+        </div>
+      </a>
+
+      <a href="we-watched.html" class="project-card g-sm-3 fade-in">
+        <div class="card-ph ph-8">
+          <img src="images/watched-hero.jpg" alt="We Watched It All">
+        </div>
+        <div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        <div class="card-info">
+          <span class="card-year">2020</span>
+          <div class="card-title">We Watched It All</div>
+          <div class="card-type">Year in Review</div>
+        </div>
+      </a>
+
+      <a href="one-story-away.html" class="project-card g-sm-4 fade-in">
+        <div class="card-ph ph-9">
+          <img src="images/osa-hero.jpg" alt="One Story Away">
+        </div>
+        <div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        <div class="card-info">
+          <span class="card-year">2021</span>
+          <div class="card-title">One Story Away</div>
+          <div class="card-type">Brand Platform / Campaign</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div>
+      <div class="section-label" style="margin-bottom:32px;">Get in Touch</div>
+      <h2 class="contact-title">Let's make<br>something <em>worth<br>talking about.</em></h2>
+    </div>
+    <a href="mailto:spensom@gmail.com" class="contact-email">spensom@gmail.com</a>
+  </section>
+
+  <footer>
+    <span>© 2025 Spencer Somers</span>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>initCursor(); initScrollAnimations();</script>
+</body>
+</html>

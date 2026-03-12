@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netflix 25 — Spencer Somers</title>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursor-ring"></div>
+  <nav>
+    <a href="index.html" class="nav-name">Spencer Somers</a>
+    <ul class="nav-links"><li><a href="index.html">Work</a></li><li><a href="about.html">About</a></li><li><a href="index.html#contact">Contact</a></li></ul>
+    <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu"><a href="index.html">Work</a><a href="about.html">About</a><a href="index.html#contact">Contact</a></div>
+
+  <section class="project-hero">
+    <div class="project-hero-media">
+      <img src="images/n25-hero.gif" alt="Netflix 25"><div class="project-hero-placeholder" style="background:linear-gradient(135deg,#100606,#1e1006);">
+        <span style="font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(240,236,228,0.1);">[ Hero image: Netflix 25 ]</span>
+      </div>
+    </div>
+    <div class="project-hero-content">
+      <div class="project-meta">
+        <span class="project-tag">2022</span>
+        <span class="project-tag">Anniversary Campaign</span>
+      </div>
+      <h1 class="project-title"><em>Netflix</em> 25</h1>
+    </div>
+  </section>
+
+  <div class="project-body">
+    <div class="project-layout">
+      <div class="project-copy fade-in">
+        <p>August 29, 2022 marked Netflix's 25th anniversary. Rather than pat ourselves on the back, we looked at this milestone as a moment to reconnect with fans at a crossroads for the brand.</p>
+        <p>Our strategy: <em>help people remember why they fell in love with Netflix in the first place.</em> We created a 90-second film retelling our story through the eyes of the fans who got us there — showing that while Netflix may have created the platform, it was the fans who made it a cultural phenomenon. We supported with a day of nostalgic social posts and a special red envelope message on the Sunset Blvd Marquee.</p>
+        <p>The film reached the TODAY Show and generated approximately <strong>15 million organic impressions in 24 hours</strong>.</p>
+      </div>
+      <div class="project-sidebar fade-in">
+        <div class="sidebar-item"><div class="sidebar-label">Role</div><div class="sidebar-value">Creative Direction / Strategy / Writing</div></div>
+        <div class="sidebar-item"><div class="sidebar-label">Client</div><div class="sidebar-value">Netflix</div></div>
+        <div class="sidebar-item"><div class="sidebar-label">Type</div><div class="sidebar-value">Anniversary Campaign / Film / Social</div></div>
+        <div class="sidebar-item"><div class="sidebar-label">Result</div><div class="sidebar-value">~15M organic impressions / 24hrs</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-media">
+    <div class="media-grid two-col">
+      <div class="yt-embed">
+        <iframe src="https://www.youtube.com/embed/pMZPTnWpaWk" title="Netflix 25" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      
+      <div class="media-item">
+        <img src="images/n25-marquee.jpg">
+      </div>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="netflix-house.html" class="proj-nav-link"><span class="proj-nav-dir">← Previous</span><span class="proj-nav-title">Welcome to Netflix House</span></a>
+    <a href="index.html" class="back-to-work">All Work</a>
+    <a href="fans-make-movies.html" class="proj-nav-link next"><span class="proj-nav-dir">Next →</span><span class="proj-nav-title">Fans Make The Movies</span></a>
+  </div>
+  <footer><span>© 2025 Spencer Somers</span></footer>
+  <script src="shared.js"></script><script>initCursor(); initScrollAnimations();</script>
+</body>
+</html>

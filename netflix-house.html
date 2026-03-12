@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Netflix House — Spencer Somers</title>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursor-ring"></div>
+  <nav>
+    <a href="index.html" class="nav-name">Spencer Somers</a>
+    <ul class="nav-links"><li><a href="index.html">Work</a></li><li><a href="about.html">About</a></li><li><a href="index.html#contact">Contact</a></li></ul>
+    <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu"><a href="index.html">Work</a><a href="about.html">About</a><a href="index.html#contact">Contact</a></div>
+
+  <section class="project-hero">
+    <div class="project-hero-media">
+      <!-- REPLACE: <video autoplay muted loop playsinline src="images/house-hero.mp4"></video> -->
+      <div class="project-hero-placeholder" style="background:linear-gradient(135deg,#06080f,#080e1a);">
+        <span style="font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(240,236,228,0.1);">[ Hero image or video: Netflix House ]</span>
+      </div>
+    </div>
+    <div class="project-hero-content">
+      <div class="project-meta">
+        <span class="project-tag">2025</span>
+        <span class="project-tag">Experiential Launch</span>
+      </div>
+      <h1 class="project-title">Welcome to<br><em>Netflix House</em></h1>
+    </div>
+  </section>
+
+  <div class="project-body">
+    <div class="project-layout">
+      <div class="project-copy fade-in">
+        <p>For over two decades, Netflix has been a guest in people's homes. Netflix House flips that equation entirely.</p>
+        <p>Launching in Philadelphia and Dallas in 2025, Netflix House is a permanent, 100,000+ square-foot entertainment venue where fans can step inside the worlds they've been watching — Stranger Things, Squid Game, Wednesday and beyond. It's Netflix's boldest bet on what brand experience can be: not a pop-up, not a stunt, but a new category.</p>
+        <p>I led creative for the launch campaign, working with Netflix Brand Creative Studio and director Amber Grace Johnson to capture the scale and spirit of what we'd built. The line wrote itself: <em>"For years, you've welcomed us into your house. Now come to ours."</em> A Las Vegas location is already in the works for 2027.</p>
+      </div>
+      <div class="project-sidebar fade-in">
+        <div class="sidebar-item"><div class="sidebar-label">Role</div><div class="sidebar-value">Creative Direction / Campaign Lead</div></div>
+        <div class="sidebar-item"><div class="sidebar-label">Client</div><div class="sidebar-value">Netflix</div></div>
+        <div class="sidebar-item"><div class="sidebar-label">Production</div><div class="sidebar-value">Netflix Brand Creative Studio</div></div>
+        <div class="sidebar-item"><div class="sidebar-label">Director</div><div class="sidebar-value">Amber Grace Johnson for Object + Animal</div></div>
+        <div class="sidebar-item"><div class="sidebar-label">Type</div><div class="sidebar-value">Experiential / Launch Campaign / Film</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-media">
+    <div class="media-grid featured">
+      <div class="yt-embed">
+      <iframe src="https://www.youtube.com/embed/22GB4i73WyQ" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+      <div class="media-item tall">
+        <img src="images/house-2.jpg">
+      </div>
+    </div>
+    <div class="media-grid two-col" style="margin-top:3px;">
+      <div class="media-item">
+        <img src="images/house-3.jpg">
+      </div>
+      <div class="media-item"><img src="images/house-4.jpg" alt="Netflix House"></div>
+    </div>
+    <div class="media-grid two-col" style="margin-top:3px;">
+      <div class="media-item"><img src="images/house-5.jpg" alt="Netflix House"></div>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="farewell-dvds.html" class="proj-nav-link"><span class="proj-nav-dir">← Previous</span><span class="proj-nav-title">Farewell to DVDs</span></a>
+    <a href="index.html" class="back-to-work">All Work</a>
+    <a href="netflix-25.html" class="proj-nav-link next"><span class="proj-nav-dir">Next →</span><span class="proj-nav-title">Netflix 25</span></a>
+  </div>
+  <footer><span>© 2025 Spencer Somers</span></footer>
+  <script src="shared.js"></script><script>initCursor(); initScrollAnimations();</script>
+</body>
+</html>

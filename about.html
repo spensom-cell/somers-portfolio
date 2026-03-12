@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Spencer Somers</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .about-hero {
+      min-height: 60vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 48px 60px;
+      position: relative; overflow: hidden;
+    }
+    .about-hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 30%, rgba(232,52,28,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 10% 80%, rgba(232,52,28,0.03) 0%, transparent 50%);
+    }
+    .about-tagline {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
+    }
+    .about-headline {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(56px, 8vw, 120px);
+      line-height: 0.92; letter-spacing: -0.02em;
+      opacity: 0; animation: fadeUp 1s ease forwards 0.5s;
+    }
+    .about-headline em { font-style: italic; color: var(--off-white); }
+
+    .about-body {
+      max-width: 1200px; margin: 0 auto;
+      padding: 100px 48px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .about-left {}
+
+    .roles {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 56px;
+    }
+    .role-tag {
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--off-white);
+      border: 1px solid var(--border);
+      padding: 7px 16px;
+    }
+
+    .about-bio {
+      font-size: 17px; line-height: 1.9; color: var(--off-white);
+    }
+    .about-bio p { margin-bottom: 32px; }
+    .about-bio p:last-child { margin-bottom: 0; }
+    .about-bio strong { color: var(--white); font-weight: 500; }
+    .about-bio em { font-style: italic; color: var(--white); }
+
+    .about-right { padding-top: 16px; }
+
+    .about-photo {
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--dark);
+      margin-bottom: 3px;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .about-photo-ph {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--dark);
+      border: 1px dashed rgba(255,255,255,0.06);
+    }
+    .about-photo-ph span {
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--off-white); opacity: 0.3;
+    }
+
+    .contact-nudge {
+      padding: 80px 48px;
+      border-top: 1px solid var(--border);
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .contact-nudge-title {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(36px, 4vw, 60px);
+      line-height: 1;
+    }
+    .contact-nudge-title em { font-style: italic; color: var(--off-white); }
+    .contact-email {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 12px;
+      transition: gap 0.3s ease;
+    }
+    .contact-email:hover { gap: 20px; }
+    .contact-email::after { content: '→'; font-family: var(--sans); }
+
+    @media (max-width: 900px) {
+      .about-hero { padding: 0 24px 48px; }
+      .about-body { padding: 60px 24px; grid-template-columns: 1fr; gap: 48px; }
+      .about-right { padding-top: 0; }
+      .about-photo { aspect-ratio: 4/3; }
+      .contact-nudge { padding: 60px 24px; flex-direction: column; align-items: flex-start; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursor-ring"></div>
+  <nav>
+    <a href="index.html" class="nav-name">Spencer Somers</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu"><a href="index.html">Work</a><a href="about.html">About</a><a href="index.html#contact">Contact</a></div>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="about-tagline">Creative Director — Los Angeles</div>
+    <h1 class="about-headline">Spencer<br><em>Somers</em></h1>
+  </section>
+
+  <!-- BODY -->
+  <div class="about-body">
+    <div class="about-left fade-in">
+      <div class="roles">
+        <span class="role-tag">Brand Leader</span>
+        <span class="role-tag">Creative Director</span>
+        <span class="role-tag">Strategist</span>
+        <span class="role-tag">Writer</span>
+        <span class="role-tag">Optimist</span>
+        <span class="role-tag">Moviegoer</span>
+      </div>
+      <div class="about-bio">
+        <p>I'm a creative director and brand marketer <strong>born, raised and based in Los Angeles</strong> — the right city for someone who spends most of his time thinking about entertainment, culture and the moments where they collide.</p>
+        <p>For the past <strong>7+ years I've been on the Global Brand Team at Netflix</strong>, leading a small team building the brand voice for one of the most watched — and argued-about — entertainment companies on earth. I've run global campaigns, led the company's first comprehensive voice guidelines and created the <strong>Netflix Marquee on Sunset Blvd</strong>, where I serve as editor-in-chief — overseeing each week's message and writing many of them. That program has grown to <strong>17 placements across 13 markets</strong>. Our first post was the most successful brand post in LinkedIn history.</p>
+        <p>Before Netflix, I led creative at small agencies — one of which <strong>won AdAge Small Agency of the Year twice</strong> — and contributed to brand campaigns at CVS, Twitter and Medium.</p>
+        <p>The work has been recognized by <strong>Cannes Lions, Clio, One Show, D&AD, ADWEEK and AdAge</strong>.</p>
+        <p>As a film student at NYU, I created the <strong>first mash-up trailer on the internet</strong> — a cut of Kill Bill and The Passion of the Christ that went viral before viral was a word. Mel Gibson's company threatened to sue NYU to take it down. The Museum of the Moving Image exhibited it anyway.</p>
+        <p><em>I believe the best brand work feels like it came from a fan, not a company.</em></p>
+      </div>
+    </div>
+
+    <div class="about-right fade-in">
+      <div class="about-photo">
+        <img src="images/about-portrait.jpg" alt="Spencer Somers"><div class="about-photo-ph">
+          <span>[ Photo of Spencer ]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT NUDGE -->
+  <div class="contact-nudge fade-in">
+    <h2 class="contact-nudge-title">Want to work<br>together? <em>Say hello.</em></h2>
+    <a href="mailto:spensom@gmail.com" class="contact-email">spensom@gmail.com</a>
+  </div>
+
+  <footer>
+    <span>© 2025 Spencer Somers</span>
+    
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>initCursor(); initScrollAnimations();</script>
+</body>
+</html>
